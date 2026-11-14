@@ -35,6 +35,13 @@ docs/                见同级 ../docs 目录：事实底座、内容方案、�
 3. 未核实项一律不上站：供应链数字（32/166/30+/20000㎡）、价格承诺、荣誉称号、领导姓名。
 4. 图片不得含第三方品牌 logo 或水印。
 
+## 部署
+
+- GitHub：https://github.com/easell/yicaitong
+- Cloudflare Pages 项目：`yicaitong`（Git 连接型，生产分支 `main`，构建 `npm run build` → `dist`）
+- 预览：https://yicaitong.pages.dev
+- 推送即构建；若推送后没触发构建，说明 Cloudflare Pages 的 GitHub App 未包含本仓库，见 `../docs/03-建站说明与待补清单.md` 第四节。
+
 ## 上线状态
 
-待办与阻塞项见 `../docs/03-建站说明与待补清单.md`（备案号、表单后端、400 续费、域名解析、地址口径）。
+正式域名（easell.com）未接入。上线阻塞项见 `../docs/03-建站说明与待补清单.md`：备案状态、表单后端、400 续费、域名解析与接入方式、地址口径。

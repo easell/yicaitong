@@ -1,0 +1,28 @@
+# Cloudflare Pages 响应头（Astro 把 public/ 原样复制到 dist/，Pages 自动读取）
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  Strict-Transport-Security: max-age=15552000; includeSubDomains
+
+# 构建产物带内容哈希，可永久缓存
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 站点图标（非哈希命名，缓存一周）
+/favicon.png
+  Cache-Control: public, max-age=604800
+
+# 产品图与品牌图内容稳定，缓存一周
+/img/*
+  Cache-Control: public, max-age=604800
+
+# HTML 每次校验，保证更新即时生效
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 表单接口不缓存
+/api/*
+  Cache-Control: no-store
