@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORIES } from '../../data/products';
+const c = CATEGORIES.find((x) => x.slug === 'boxes')!;
+---
+<BaseLayout
+  title="可降解打包盒、分格餐盒批发｜方型·圆形·分格沙拉盒"
+  description="易采通可降解打包盒与分格餐盒：方型/圆形打包盒、分格餐盒、分格沙拉盒，适合外卖打包、商超熟食与团餐场景，执行 GB/T 18006.3-2020，支持定制印 LOGO。批发咨询 400-0731-816。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '产品中心', url: '/products/' }, { name: '打包盒与分格餐盒', url: '/products/boxes/' }]}
+  active="/products/"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: '可降解快餐打包盒与分格餐盒',
+    brand: { '@type': 'Brand', name: '翠上' },
+    category: '一次性可降解餐饮具',
+    description: c.description,
+  }}
+>
+  <section class="band">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center">
+      <div>
+        <h2 class="sec">{c.title}</h2>
+        <p style="color:var(--muted)">{c.description}</p>
+        <div class="stdbar" style="margin-top:18px"><b>执行标准：</b>{c.standards.join('；')}</div>
+        <p style="margin-top:18px"><a href="/contact/" class="btn primary">获取报价</a></p>
+      </div>
+      <img src={c.image} alt={c.alt} width="750" height="750" />
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">产品系列</h2>
+      <div class="grid grid-3">
+        <div class="card"><img src="/img/boxes-kraft.webp" alt="牛皮纸方型打包盒" width="800" height="1102" loading="lazy" /><h3>方型打包盒</h3><p>牛皮纸色/白色可选，带盖防漏。</p></div>
+        <div class="card"><img src="/img/boxes-compartment.webp" alt="分格餐盒" width="790" height="872" loading="lazy" /><h3>分格餐盒</h3><p>多格分区，饭菜分离，适合团餐。</p></div>
+        <div class="card"><img src="/img/boxes-compartment2.webp" alt="分格沙拉盒" width="800" height="881" loading="lazy" /><h3>分格沙拉盒</h3><p>透明盖可选，轻食沙拉首选。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">规格与说明</h2>
+      <table class="tbl">
+        <tbody>
+          {c.specs.map((s) => (
+            <tr><th style="width:130px">{s.label}</th><td>{s.value}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <ul style="color:var(--muted);font-size:14.5px;margin-top:16px">
+        {c.notes.map((n) => <li>{n}</li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

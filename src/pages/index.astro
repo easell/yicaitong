@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+import { CATEGORIES } from '../data/products';
+---
+<BaseLayout
+  title="易采通｜湖南省集采集供平台 · 全生物降解产品一站式采购"
+  description="易采通是湖南省集采集供平台，由湖南省循环经济研究会可降解塑料产业创新专委会监管。全生物降解纸杯、打包盒、垃圾袋、购物袋、刀叉勺、吸管一站式采购，统一监管、统一采购、统一仓储、统一配送，每件产品印监管码可溯源。服务热线 400-0731-816。"
+  active="/"
+>
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="container">
+      <div>
+        <span class="kicker">湖南省集采集供平台 · 专委会监管</span>
+        <h1>买可降解产品，<em>就上易采通</em></h1>
+        <p class="lead">
+          纸杯、打包盒、垃圾袋、购物袋、刀叉勺、吸管，四大类全生物降解制品一站式采购。
+          平台按国家标准组织货源，每件产品印有监管码，从原料到成品全流程可追溯，
+          解决可降解产品「采购难、真假难辨、配送贵」的问题。
+        </p>
+        <div class="actions">
+          <a href="/products/" class="btn primary">浏览产品中心</a>
+          <a href="/model/" class="btn ghost">了解集采集供</a>
+        </div>
+      </div>
+      <div class="pic">
+        <img src="/img/hero-boxes.webp" alt="牛皮纸分格沙拉盒与打包盒" width="1400" height="1010" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 信任条 -->
+  <section class="trust">
+    <div class="container">
+      <div><b>专委会监管</b><span>湖南省循环经济研究会可降解塑料产业创新专委会</span></div>
+      <div><b>联盟近 200 家成员</b><span>湖南省（暨长沙市）可降解塑料产业创新联盟</span></div>
+      <div><b>监管码溯源</b><span>每件产品全流程追溯备案</span></div>
+      <div><b>政府采购代理</b><span>经营范围含政府采购代理服务资质</span></div>
+    </div>
+  </section>
+
+  <!-- 四统一 -->
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">「四统一」运营体系</h2>
+      <p class="sec-sub">集采集供平台的核心机制，让合规产品价格降下来、质量稳得住。</p>
+      <div class="grid grid-4">
+        <div class="card"><h3>统一监管</h3><p>平台由专委会监管，产品经征集、审核、备案后上架，杜绝虚标伪标。</p></div>
+        <div class="card"><h3>统一采购</h3><p>平台直接向联盟厂家批量采购并签订专供合同，以集中采购降低成本。</p></div>
+        <div class="card"><h3>统一仓储</h3><p>集中仓储备货，常备库存，一件起发，保障禁塑政策推进时的货源。</p></div>
+        <div class="card"><h3>统一配送</h3><p>统一组织物流配送，减少流通环节，降低采购与配送成本。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品四类 -->
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">产品中心</h2>
+      <p class="sec-sub">按品类执行相应国家标准，检测报告可随订单索取。</p>
+      <div class="grid grid-4">
+        {CATEGORIES.map((c) => (
+          <div class="card">
+            <img src={c.image} alt={c.alt} width="800" height="800" loading="lazy" />
+            <h3>{c.name}</h3>
+            <p>{c.standards.join('；')}</p>
+            <a class="more" href={`/products/${c.slug}/`}>查看品类 →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 标准条 -->
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">按国家标准采购，看得见的依据</h2>
+      <p class="sec-sub">我们要求每一件上架产品标注执行标准——买得明白，用得放心。</p>
+      <div class="stdbar">
+        <b>GB/T 18006.3-2020</b>　一次性可降解餐饮具　｜
+        <b>GB/T 38082-2019</b>　生物降解塑料购物袋　｜
+        <b>GB/T 28018-2011</b>　生物分解塑料垃圾袋
+      </div>
+    </div>
+  </section>
+
+  <!-- 溯源流程 -->
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">一件产品，四个环节，全程可查</h2>
+      <p class="sec-sub">依托湖南省可降解塑料信息管理平台的追溯体系。</p>
+      <div class="steps">
+        <div class="step"><h3>源头备案</h3><p>合作厂家的产品经征集、审核后进入备案名录，包装标注执行标准。</p></div>
+        <div class="step"><h3>统一采购</h3><p>平台与厂家签订专供合同，约定质量标准与价格条款。</p></div>
+        <div class="step"><h3>印码出厂</h3><p>每件产品印有监管码，扫码即可查询备案与溯源信息。</p></div>
+        <div class="step"><h3>监督核查</h3><p>专委会组织开展监督核查，市场发现假冒伪劣可向平台投诉。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 双业务 -->
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">两大业务</h2>
+      <p class="sec-sub">零售与政企采购，同一套货源，同一个标准。</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>易采通云超市（零售）</h3>
+          <p>面向商户与个人的一站式采购入口，一件起订、一件起发。支持定制印 LOGO，物流配送全覆盖。</p>
+          <a class="more" href="/contact/">咨询采购 →</a>
+        </div>
+        <div class="card">
+          <h3>易采通政府采购（政企）</h3>
+          <p>面向党政机关、事业单位、学校、医院、商超、农贸市场等公共机构，提供可降解产品集中供应与配套服务。</p>
+          <a class="more" href="/model/">政采服务流程 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>采购可降解产品，从一次咨询开始</h2>
+      <p>{SITE.phoneNote}：{SITE.phone}　·　支持政企采购、经销合作与产品定制</p>
+      <a href="/contact/" class="btn primary">立即咨询</a>
+    </div>
+  </section>
+</BaseLayout>

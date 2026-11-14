@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+---
+<BaseLayout
+  title="关于易采通｜湖南易采通供应链有限公司"
+  description="湖南易采通供应链有限公司成立于 2022 年 9 月，是湖南省集采集供平台的实施主体，由湖南翠上环保科技有限公司全资投入，隶属御豪集团国内分销环节。2022 年 11 月平台上线，2023 年 7 月启动仪式举行。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '关于易采通', url: '/about/' }]}
+  active="/about/"
+>
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">关于易采通</h2>
+      <p style="color:var(--muted);max-width:820px">
+        易采通是致力于「助力塑料污染治理，共建生态循环经济」而打造的一站式集采集供平台。
+        平台整合湖南省乃至全国塑料产业研究、检测、生产、流通、回收利用等机构及企业资源优势，
+        实现全产业链覆盖，通过「四统一」解决可降解环保产品价格高、采购难、配送贵等问题。
+      </p>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="container" style="display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start">
+      <div>
+        <h2 class="sec">公司信息</h2>
+        <table class="tbl">
+          <tbody>
+            <tr><th style="width:150px">公司名称</th><td>湖南易采通供应链有限公司</td></tr>
+            <tr><th>统一社会信用代码</th><td>{SITE.uscc}</td></tr>
+            <tr><th>成立日期</th><td>2022 年 9 月 1 日</td></tr>
+            <tr><th>注册地址</th><td>{SITE.address}</td></tr>
+            <tr><th>定位</th><td>湖南省集采集供平台实施主体（御豪集团闭环生态 · 国内分销环节）</td></tr>
+            <tr><th>经营范围（要点）</th><td>供应链管理服务、政府采购代理服务、互联网销售、包装服务、仓储服务、国内货物运输代理、货物进出口、纸制品与塑料制品销售等</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2 class="sec">发展历程</h2>
+        <ul class="timeline">
+          <li><b>2022.09</b>湖南易采通供应链有限公司成立，平台筹建启动。</li>
+          <li><b>2022.11</b>易采通平台正式上线，设禁塑政策、行业动态、监督核查、宣传教育、溯源管理、云超市六大板块。</li>
+          <li><b>2023.07</b>参加第四届湖南国际绿色发展博览会可降解专区（湖南国际会展中心）。</li>
+          <li><b>2023.07</b>湖南省集采集供平台启动仪式举行，平台进入全面运营阶段。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">监管与依托</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>专委会监管</h3>
+          <p>湖南省循环经济研究会可降解塑料产业创新专委会对平台实施监管。</p>
+        </div>
+        <div class="card">
+          <h3>联盟依托</h3>
+          <p>湖南省（暨长沙市）可降解塑料产业创新联盟——国内率先就「塑料污染治理」成立的产业创新联盟，成员单位近 200 家，接受省、市发改委指导。</p>
+        </div>
+        <div class="card">
+          <h3>集团生态</h3>
+          <p>易采通是御豪集团包装生态闭环的国内分销环节，与生产、检测、出口等环节协同，货源与品控同源。</p>
+        </div>
+      </div>
+      <p style="margin-top:14px;font-size:13.5px;color:var(--muted)">
+        集团更多信息见 <a href={SITE.groupUrl} target="_blank" rel="noopener">御豪集团官网</a>。
+      </p>
+    </div>
+  </section>
+</BaseLayout>

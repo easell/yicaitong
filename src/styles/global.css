@@ -1,0 +1,146 @@
+/* 易采通 easell.com —— 全局样式（橙色 VI #F57921，中文排版） */
+:root {
+  --brand: #f57921;
+  --brand-dark: #d35f0e;
+  --brand-deep: #a84a08;
+  --brand-soft: #fef1e7;
+  --paper: #faf7f3;
+  --ink: #241c14;
+  --muted: #6b6157;
+  --line: #eee2d6;
+  --green: #3c8a4d;
+  --maxw: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.7;
+  font-size: 16px;
+}
+a { color: var(--brand-dark); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; display: block; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+.skip { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--brand-dark); color: #fff; padding: 10px 18px; }
+.skip:focus { left: 0; }
+
+/* 页头 */
+header.site { border-bottom: 1px solid var(--line); background: #fffffff5; backdrop-filter: blur(6px); position: sticky; top: 0; z-index: 20; }
+header.site > .container { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 20px; }
+.logo { display: flex; align-items: center; gap: 10px; color: var(--brand-deep); font-weight: 800; font-size: 21px; letter-spacing: .06em; }
+.logo img { width: 38px; height: 38px; border-radius: 50%; }
+.logo small { font-weight: 500; font-size: 11px; letter-spacing: .12em; color: var(--muted); }
+nav.main { display: flex; gap: 22px; font-size: 15px; }
+nav.main a { color: var(--muted); white-space: nowrap; }
+nav.main a:hover { color: var(--brand-dark); text-decoration: none; }
+nav.main a[aria-current="page"] { color: var(--brand-dark); font-weight: 600; }
+.header-cta { display: inline-block; background: var(--brand); color: #fff; padding: 9px 18px; border-radius: 6px; font-size: 14.5px; font-weight: 600; white-space: nowrap; }
+.header-cta:hover { background: var(--brand-dark); text-decoration: none; }
+
+/* 面包屑 */
+.crumbs { font-size: 13.5px; color: var(--muted); padding: 14px 0 0; }
+.crumbs a { color: var(--muted); }
+
+/* 通用版块 */
+section.band { padding: 56px 0; }
+section.band.alt { background: var(--paper); }
+h2.sec { font-size: 26px; margin: 0 0 8px; letter-spacing: .02em; }
+p.sec-sub { color: var(--muted); margin: 0 0 30px; font-size: 15px; }
+.grid { display: grid; gap: 20px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+.card img { width: 100%; height: auto; border-radius: 8px; }
+.card h3 { margin: 14px 0 8px; font-size: 17.5px; }
+.card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.card .more { display: inline-block; margin-top: 12px; font-weight: 600; font-size: 14px; }
+
+/* 首页 hero */
+.hero { background: linear-gradient(135deg, #fff7ef 0%, #fde9d7 100%); padding: 64px 0; }
+.hero .container { display: grid; grid-template-columns: 1.15fr .85fr; gap: 44px; align-items: center; }
+.hero .kicker { display: inline-block; background: var(--brand-soft); color: var(--brand-deep); font-size: 13.5px; font-weight: 600; padding: 5px 12px; border-radius: 999px; margin-bottom: 16px; }
+.hero h1 { font-size: 40px; line-height: 1.25; margin: 0 0 16px; letter-spacing: .02em; }
+.hero h1 em { font-style: normal; color: var(--brand-dark); }
+.hero .lead { color: var(--muted); font-size: 16.5px; margin: 0 0 26px; }
+.hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 12px 26px; border-radius: 8px; font-weight: 600; font-size: 15.5px; }
+.btn.primary { background: var(--brand); color: #fff; }
+.btn.primary:hover { background: var(--brand-dark); text-decoration: none; }
+.btn.ghost { border: 1.5px solid var(--brand); color: var(--brand-dark); background: #fff; }
+.btn.ghost:hover { background: var(--brand-soft); text-decoration: none; }
+.hero .pic img { border-radius: 14px; box-shadow: 0 18px 44px rgba(168, 74, 8, .16); }
+
+/* 信任条 */
+.trust { background: var(--brand-deep); color: #fff; padding: 26px 0; }
+.trust .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; }
+.trust b { display: block; font-size: 16.5px; margin-bottom: 4px; }
+.trust span { font-size: 13px; opacity: .85; }
+
+/* 标准条 */
+.stdbar { background: var(--brand-soft); border: 1px dashed var(--brand); border-radius: 10px; padding: 18px 22px; font-size: 14.5px; }
+.stdbar b { color: var(--brand-deep); }
+
+/* 表格 */
+table.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; background: #fff; }
+table.tbl th, table.tbl td { border: 1px solid var(--line); padding: 10px 14px; text-align: left; vertical-align: top; }
+table.tbl th { background: var(--brand-soft); color: var(--brand-deep); font-weight: 600; white-space: nowrap; }
+
+/* 时间线 */
+.timeline { border-left: 3px solid var(--brand); margin: 0; padding: 0 0 0 22px; list-style: none; }
+.timeline li { position: relative; margin-bottom: 18px; }
+.timeline li::before { content: ""; position: absolute; left: -30px; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--brand); }
+.timeline b { display: inline-block; min-width: 92px; color: var(--brand-deep); }
+
+/* 流程步骤 */
+.steps { counter-reset: step; display: grid; gap: 16px; }
+.step { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px 18px 62px; }
+.step::before { counter-increment: step; content: counter(step); position: absolute; left: 18px; top: 16px; width: 30px; height: 30px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.step h3 { margin: 0 0 6px; font-size: 16.5px; }
+.step p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+/* CTA 条 */
+.cta-band { background: linear-gradient(120deg, var(--brand) 0%, var(--brand-dark) 100%); color: #fff; padding: 44px 0; text-align: center; }
+.cta-band h2 { margin: 0 0 10px; font-size: 24px; }
+.cta-band p { margin: 0 0 22px; opacity: .92; }
+.cta-band .btn.primary { background: #fff; color: var(--brand-deep); }
+
+/* 页脚 */
+footer.site { background: #2b2118; color: #cbbfae; padding: 40px 0 28px; font-size: 13.5px; margin-top: 0; }
+footer.site .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; margin-bottom: 26px; }
+footer.site h4 { color: #fff; font-size: 15px; margin: 0 0 10px; }
+footer.site a { color: #cbbfae; }
+footer.site a:hover { color: #fff; }
+footer.site ul { list-style: none; margin: 0; padding: 0; }
+footer.site li { margin-bottom: 7px; }
+footer.site .qr img { width: 92px; height: 92px; border-radius: 8px; background: #fff; padding: 4px; }
+footer.site .legal { border-top: 1px solid #463a2d; padding-top: 16px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: #9c8f7d; }
+
+/* 联系页表单 */
+form.inquiry { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 26px; }
+form.inquiry label { display: block; font-size: 14px; font-weight: 600; margin: 14px 0 6px; }
+form.inquiry label:first-child { margin-top: 0; }
+form.inquiry input, form.inquiry select, form.inquiry textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; font-size: 15px; font-family: inherit; }
+form.inquiry .btn { margin-top: 18px; width: 100%; }
+.form-note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+/* 联系信息卡 */
+.contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.contact-cards .card h3 { margin-top: 0; }
+
+@media (max-width: 900px) {
+  header.site > .container { height: auto; flex-wrap: wrap; padding-top: 10px; padding-bottom: 8px; gap: 8px; }
+  nav.main { width: 100%; overflow-x: auto; scrollbar-width: none; gap: 18px; padding-bottom: 4px; }
+  .hero .container { grid-template-columns: 1fr; gap: 26px; }
+  .hero h1 { font-size: 30px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .trust .container { grid-template-columns: repeat(2, 1fr); }
+  .contact-cards { grid-template-columns: 1fr; }
+  footer.site .cols { grid-template-columns: 1fr; }
+}

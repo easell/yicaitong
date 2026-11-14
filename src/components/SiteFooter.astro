@@ -1,0 +1,37 @@
+---
+import { SITE } from '../data/site';
+import { CATEGORIES } from '../data/products';
+const year = new Date().getFullYear();
+---
+<footer class="site">
+  <div class="container">
+    <div class="cols">
+      <div>
+        <h4>易采通｜{SITE.tagline}</h4>
+        <p>致力于「助力塑料污染治理，共建生态循环经济」的一站式集采集供平台。统一监管、统一采购、统一仓储、统一配送，每件产品可溯源。</p>
+        <p>湖南易采通供应链有限公司<br />统一社会信用代码：{SITE.uscc}</p>
+      </div>
+      <div>
+        <h4>产品中心</h4>
+        <ul>
+          {CATEGORIES.map((c) => (
+            <li><a href={`/products/${c.slug}/`}>{c.name}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="qr">
+        <h4>关注我们</h4>
+        <img src="/img/qr-gzh.webp" alt="易采通微信公众号二维码" width="92" height="92" loading="lazy" />
+        <p style="margin-top:8px">微信公众号</p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© {year} {SITE.legalName} 版权所有</span>
+      <span>
+        {/* 上线前替换为有效备案号（湘ICP备2022019296号-1 状态待核，见 docs/01 §二） */}
+        {SITE.icpPlaceholder} · 增值电信业务经营许可证：待补
+      </span>
+      <span><a href={SITE.groupUrl} target="_blank" rel="noopener">御豪集团</a></span>
+    </div>
+  </div>
+</footer>

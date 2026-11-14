@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="经销合作｜可降解产品经销商招募·一城一点"
+  description="易采通面向全国招募可降解产品经销商：重点市场分区布点、非重点市场一城一点、全渠道扁平化管理（公司直供），保护渠道利益。欢迎批发市场经销商、集团采购部门、政采供应商洽谈合作。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '经销合作', url: '/dealers/' }]}
+  active="/dealers/"
+>
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">和易采通一起做禁塑生意</h2>
+      <p class="sec-sub">禁塑政策持续推进，合规可降解产品需求稳定增长。我们寻找各地的渠道伙伴，共同把正规货源铺进市场。</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>一城一点保护</h3>
+          <p>地级市及以下市场只发展一家经销商，保护渠道利益，发挥渠道积极性。</p>
+        </div>
+        <div class="card">
+          <h3>扁平化直供</h3>
+          <p>所有渠道商均由公司直接供货，最大限度减少流通环节，保障渠道与公司利益。</p>
+        </div>
+        <div class="card">
+          <h3>重点市场深耕</h3>
+          <p>重点一线城市、省会城市内可发展多家经销商，配套区域销售网络规划与价格管理。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+      <div>
+        <h2 class="sec">我们希望你是</h2>
+        <ul style="color:var(--muted);line-height:2">
+          <li>· 拥有批发市场、商超、餐饮或政企渠道资源</li>
+          <li>· 认可「按标准卖真货」的经营理念</li>
+          <li>· 具备区域仓储或配送能力（可与平台仓配协同）</li>
+          <li>· 愿意接受一城一点的区域保护规则</li>
+        </ul>
+        <p>平台提供：备案合规货源、统一品牌物料、监管码溯源体系、定制代印支持。</p>
+      </div>
+      <form class="inquiry" action="/api/contact" method="post">
+        <h3 style="margin:0 0 4px">经销申请</h3>
+        <p class="form-note">提交后我们将在 1 个工作日内与您联系。</p>
+        <label for="d-company">公司 / 商户名称</label>
+        <input id="d-company" name="company" type="text" required />
+        <label for="d-name">联系人</label>
+        <input id="d-name" name="name" type="text" required />
+        <label for="d-phone">联系电话</label>
+        <input id="d-phone" name="phone" type="tel" required />
+        <label for="d-region">意向区域</label>
+        <input id="d-region" name="region" type="text" placeholder="省 / 市 / 区" />
+        <label for="d-channel">现有渠道类型</label>
+        <select id="d-channel" name="channel">
+          <option>批发市场</option>
+          <option>商超 / 连锁</option>
+          <option>餐饮 / 团餐</option>
+          <option>政企采购</option>
+          <option>线上渠道</option>
+        </select>
+        <label for="d-msg">留言</label>
+        <textarea id="d-msg" name="message" rows="3"></textarea>
+        <button class="btn primary" type="submit">提交申请</button>
+        <input type="hidden" name="type" value="dealer" />
+      </form>
+    </div>
+  </section>
+</BaseLayout>

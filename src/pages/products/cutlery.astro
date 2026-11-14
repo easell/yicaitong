@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORIES } from '../../data/products';
+const c = CATEGORIES.find((x) => x.slug === 'cutlery')!;
+---
+<BaseLayout
+  title="可降解刀叉勺、吸管批发｜淀粉基餐具·纸吸管·PLA 吸管"
+  description="易采通可降解餐具：玉米淀粉基刀叉勺、纸吸管与 PLA 吸管（单支独立包装、尖口设计），适配奶茶、咖啡与快餐场景，执行 GB/T 18006.3-2020，支持 LOGO 定制。批发咨询 400-0731-816。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '产品中心', url: '/products/' }, { name: '刀叉勺与吸管', url: '/products/cutlery/' }]}
+  active="/products/"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: '可降解刀叉勺与吸管',
+    brand: { '@type': 'Brand', name: '翠上' },
+    category: '一次性可降解餐饮具',
+    description: c.description,
+  }}
+>
+  <section class="band">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center">
+      <div>
+        <h2 class="sec">{c.title}</h2>
+        <p style="color:var(--muted)">{c.description}</p>
+        <div class="stdbar" style="margin-top:18px"><b>执行标准：</b>{c.standards.join('；')}</div>
+        <p style="margin-top:18px"><a href="/contact/" class="btn primary">获取报价</a></p>
+      </div>
+      <img src={c.image} alt={c.alt} width="750" height="440" />
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">吸管系列</h2>
+      <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;padding:0">
+        <div>
+          <p style="color:var(--muted)">纸吸管与 PLA 吸管双材质可选，单支独立包装，卫生便携；尖口设计方便插杯，适配冷热饮场景。</p>
+          <ul style="color:var(--muted);font-size:14.5px">
+            {c.notes.map((n) => <li>{n}</li>)}
+          </ul>
+        </div>
+        <img src="/img/cutlery-straw.webp" alt="PLA 吸管单支独立包装" width="750" height="744" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">规格与说明</h2>
+      <table class="tbl">
+        <tbody>
+          {c.specs.map((s) => (
+            <tr><th style="width:130px">{s.label}</th><td>{s.value}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORIES } from '../../data/products';
+const c = CATEGORIES.find((x) => x.slug === 'bags')!;
+---
+<BaseLayout
+  title="全生物降解垃圾袋、购物袋批发定制｜GB/T 38082 / GB/T 28018"
+  description="易采通全生物降解袋类：生物降解塑料购物袋执行 GB/T 38082-2019，生物分解塑料垃圾袋执行 GB/T 28018-2011，材质 PLA+PBAT，背心袋/平口袋多规格，支持定制印刷。批发咨询 400-0731-816。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '产品中心', url: '/products/' }, { name: '垃圾袋与购物袋', url: '/products/bags/' }]}
+  active="/products/"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: '全生物降解垃圾袋与购物袋',
+    brand: { '@type': 'Brand', name: '翠上' },
+    category: '生物降解塑料制品',
+    description: c.description,
+  }}
+>
+  <section class="band">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center">
+      <div>
+        <h2 class="sec">{c.title}</h2>
+        <p style="color:var(--muted)">{c.description}</p>
+        <div class="stdbar" style="margin-top:18px">
+          <b>执行标准：</b>{c.standards.join('；')}
+        </div>
+        <p style="margin-top:18px"><a href="/contact/" class="btn primary">获取报价</a></p>
+      </div>
+      <img src={c.image} alt={c.alt} width="790" height="630" />
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">规格与说明</h2>
+      <table class="tbl">
+        <tbody>
+          {c.specs.map((s) => (
+            <tr><th style="width:130px">{s.label}</th><td>{s.value}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <ul style="color:var(--muted);font-size:14.5px;margin-top:16px">
+        {c.notes.map((n) => <li>{n}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">禁塑场景适配</h2>
+      <div class="grid grid-3">
+        <div class="card"><h3>商超零售</h3><p>购物袋替代传统塑料袋，按 GB/T 38082-2019 供货，可印商超标识。</p></div>
+        <div class="card"><h3>市政与物业</h3><p>垃圾袋按 GB/T 28018-2011 供货，适配分类收运场景。</p></div>
+        <div class="card"><h3>餐饮外卖</h3><p>背心袋/平口袋多规格常备库存，一件起发。</p></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

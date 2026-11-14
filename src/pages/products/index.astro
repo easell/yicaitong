@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORIES } from '../../data/products';
+---
+<BaseLayout
+  title="产品中心｜全生物降解纸杯、打包盒、垃圾袋、购物袋、刀叉勺、吸管"
+  description="易采通产品中心：全生物降解纸杯（GB/T 18006.3-2020）、快餐打包盒与分格餐盒、全生物降解垃圾袋（GB/T 28018-2011）与购物袋（GB/T 38082-2019）、刀叉勺与吸管。按国家标准采购，支持定制印 LOGO，检测报告可索取。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '产品中心', url: '/products/' }]}
+  active="/products/"
+>
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">产品中心</h2>
+      <p class="sec-sub">
+        品牌「翠上」，产地湖南长沙，四大类产品覆盖餐饮、商超、政务与家庭消费场景。
+        每个品类按标准标注执行标准号，支持定制规格与 LOGO 印刷。
+      </p>
+      <div class="grid grid-4">
+        {CATEGORIES.map((c) => (
+          <div class="card">
+            <img src={c.image} alt={c.alt} width="800" height="800" loading="lazy" />
+            <h3>{c.name}</h3>
+            <p>{c.description.slice(0, 52)}…</p>
+            <a class="more" href={`/products/${c.slug}/`}>查看品类 →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">为什么认准标准号</h2>
+      <p class="sec-sub">市场上流通的可降解产品存在标识不规范或虚标伪标现象——三看，快速辨别合规产品。</p>
+      <div class="steps">
+        <div class="step"><h3>看执行标准</h3><p>餐饮具认 GB/T 18006.3-2020，购物袋认 GB/T 38082-2019，垃圾袋认 GB/T 28018-2011。</p></div>
+        <div class="step"><h3>看检测报告</h3><p>正规产品可提供具备 CMA/CNAS 资质机构出具的检测报告。</p></div>
+        <div class="step"><h3>看监管码</h3><p>易采通所售产品印有监管码，扫码可查备案与溯源信息。</p></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import { SITE, NAV } from '../data/site';
+
+interface Props { active?: string; }
+const { active } = Astro.props;
+---
+<header class="site">
+  <div class="container">
+    <a href="/" class="logo" aria-label="易采通首页">
+      <img src="/img/logo.png" alt="易采通标志" width="38" height="38" />
+      <span>易采通 <small>湖南省集采集供平台</small></span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      {NAV.map((item) => (
+        <a href={item.href} aria-current={active === item.href ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+    <a href="/contact/" class="header-cta">联系我们</a>
+  </div>
+</header>

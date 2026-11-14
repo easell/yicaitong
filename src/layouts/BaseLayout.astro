@@ -1,0 +1,126 @@
+---
+// 基础布局：中文站 SEO（百度友好）——标题/描述/canonical/JSON-LD/面包屑
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE } from '../data/site';
+
+interface Crumb { name: string; url: string; }
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, any> | Record<string, any>[];
+  breadcrumbs?: Crumb[];
+  active?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.pathname,
+  image = '/img/og-image.jpg',
+  noindex = false,
+  jsonLd,
+  breadcrumbs,
+  active,
+} = Astro.props;
+
+const site = Astro.site ?? new URL(SITE.url);
+const canonicalAbs = new URL(canonical, site).href;
+const ogImage = new URL(image, site).href;
+
+const autoCrumbs: Crumb[] =
+  breadcrumbs ??
+  (Astro.url.pathname === '/'
+    ? []
+    : [
+        { name: '首页', url: '/' },
+        { name: title.split('｜')[0].trim(), url: Astro.url.pathname },
+      ]);
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.legalName,
+  url: site.href,
+  logo: new URL('/img/logo.png', site).href,
+  description: SITE.shortDesc,
+  foundingDate: '2022-09-01',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '学士街道学华村碧桂园（智慧园）30 栋 102',
+    addressLocality: '长沙市',
+    addressRegion: '湖南省',
+    addressCountry: 'CN',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+86-400-0731-816',
+    contactType: 'customer service',
+    areaServed: 'CN',
+    availableLanguage: ['zh-CN'],
+  },
+  parentOrganization: { '@type': 'Organization', name: '御豪集团', url: SITE.groupUrl },
+};
+
+const crumbLd = autoCrumbs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: autoCrumbs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.name,
+        item: new URL(c.url, site).href,
+      })),
+    }
+  : null;
+
+const pageLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const allLd = [orgLd, ...(crumbLd ? [crumbLd] : []), ...pageLd];
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalAbs} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <meta name="robots" content="index, follow, max-image-preview:large" />}
+    <meta name="theme-color" content="#f57921" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={`${SITE.name}｜${SITE.tagline}`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalAbs} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="zh_CN" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    {allLd.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
+  </head>
+  <body>
+    <a href="#main" class="skip">跳到正文</a>
+    <SiteHeader active={active} />
+    <main id="main">
+      {autoCrumbs.length > 0 && (
+        <nav class="crumbs" aria-label="面包屑">
+          <div class="container">
+            {autoCrumbs.map((c, i) => (
+              <>
+                {i > 0 && ' › '}
+                {i === autoCrumbs.length - 1 ? <span>{c.name}</span> : <a href={c.url}>{c.name}</a>}
+              </>
+            ))}
+          </div>
+        </nav>
+      )}
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

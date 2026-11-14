@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+---
+<BaseLayout
+  title="联系我们｜采购咨询·政采服务·经销合作"
+  description="联系易采通：7×24 小时服务热线 400-0731-816。支持产品采购询价、政企采购咨询与经销合作申请。地址：湖南省长沙市岳麓区学士街道学华村碧桂园（智慧园）30 栋 102。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '联系我们', url: '/contact/' }]}
+  active="/contact/"
+>
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">联系我们</h2>
+      <p class="sec-sub">采购询价、政企采购、经销合作，都可以从这里开始。</p>
+      <div class="contact-cards" style="margin-bottom:36px">
+        <div class="card">
+          <h3>服务热线</h3>
+          <p style="font-size:22px;font-weight:700;color:var(--brand-deep)">{SITE.phone}</p>
+          <p>{SITE.phoneNote}</p>
+        </div>
+        <div class="card">
+          <h3>公司地址</h3>
+          <p>{SITE.address}</p>
+        </div>
+        <div class="card">
+          <h3>关注公众号</h3>
+          <img src="/img/qr-gzh.webp" alt="易采通微信公众号二维码" width="120" height="120" style="width:120px" loading="lazy" />
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+        <form class="inquiry" action="/api/contact" method="post">
+          <h3 style="margin:0 0 4px">在线咨询</h3>
+          <p class="form-note">请留下联系方式与需求，我们将在 1 个工作日内回复。</p>
+          <label for="c-type">咨询类型</label>
+          <select id="c-type" name="type">
+            <option value="inquiry">产品采购询价</option>
+            <option value="gov">政企采购咨询</option>
+            <option value="dealer">经销合作申请</option>
+            <option value="other">其他</option>
+          </select>
+          <label for="c-company">公司 / 单位名称</label>
+          <input id="c-company" name="company" type="text" />
+          <label for="c-name">联系人</label>
+          <input id="c-name" name="name" type="text" required />
+          <label for="c-phone">联系电话</label>
+          <input id="c-phone" name="phone" type="tel" required />
+          <label for="c-msg">需求描述</label>
+          <textarea id="c-msg" name="message" rows="4" placeholder="品类、规格、数量、用途等"></textarea>
+          <button class="btn primary" type="submit">提交</button>
+        </form>
+        <div>
+          <h3 style="margin-top:0">采购小提示</h3>
+          <ul style="color:var(--muted);line-height:2;font-size:14.5px">
+            <li>· 咨询时说明品类、规格、数量与用途，报价更快更准</li>
+            <li>· 支持「一件起订、一件起发」，小批量也可下单</li>
+            <li>· 支持定制规格与 LOGO 印刷，起订量另行沟通</li>
+            <li>· 政企客户可提供批量供应方案与合规文件</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CATEGORIES } from '../../data/products';
+const c = CATEGORIES.find((x) => x.slug === 'cups')!;
+---
+<BaseLayout
+  title="全生物降解纸杯批发定制｜品尝杯·咖啡杯·奶茶杯·汤桶汤碗"
+  description="易采通全生物降解纸杯：品尝杯、冷热饮、咖啡杯、奶茶、汤桶、汤碗、爆米花桶七大系列，纸板+CA（涂层）与纸板+PLA 两条材质线，执行 GB/T 18006.3-2020，适用 0-100℃，支持定制印 LOGO。批发与定制咨询 400-0731-816。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '产品中心', url: '/products/' }, { name: '纸杯', url: '/products/cups/' }]}
+  active="/products/"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: '全生物降解纸杯',
+    brand: { '@type': 'Brand', name: '翠上' },
+    category: '一次性可降解餐饮具',
+    description: c.description,
+  }}
+>
+  <section class="band">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center">
+      <div>
+        <h2 class="sec">{c.title}</h2>
+        <p style="color:var(--muted)">{c.description}</p>
+        <div class="stdbar" style="margin-top:18px"><b>执行标准：</b>{c.standards.join('；')}</div>
+        <p style="margin-top:18px">
+          <a href="/contact/" class="btn primary">获取报价</a>
+        </p>
+      </div>
+      <img src={c.image} alt={c.alt} width="800" height="800" />
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">产品系列</h2>
+      <div class="grid grid-4" style="grid-template-columns:repeat(4,1fr)">
+        {c.series.map((s) => <div class="card"><h3 style="margin-top:0">{s}</h3></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">规格与说明</h2>
+      <table class="tbl">
+        <tbody>
+          {c.specs.map((s) => (
+            <tr><th style="width:130px">{s.label}</th><td>{s.value}</td></tr>
+          ))}
+        </tbody>
+      </table>
+      <ul style="color:var(--muted);font-size:14.5px;margin-top:16px">
+        {c.notes.map((n) => <li>{n}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">使用说明（包装原文）</h2>
+      <p style="color:var(--muted)">可盛装各种冷热食品、可冷藏；适用温度 0–100℃；请勿将本品接触明火或高温场所。</p>
+    </div>
+  </section>
+</BaseLayout>

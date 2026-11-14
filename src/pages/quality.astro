@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="溯源与品控｜监管码追溯·四统一·检测报告"
+  description="易采通溯源与品控：依托湖南省可降解塑料信息管理平台，每件产品印有监管码、全流程追溯备案；四统一运营体系；合作厂家产品经具备 CMA/CNAS 资质机构检测，报告编号可查。"
+  breadcrumbs={[{ name: '首页', url: '/' }, { name: '溯源与品控', url: '/quality/' }]}
+  active="/quality/"
+>
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">每件产品，扫码可查</h2>
+      <p class="sec-sub">依托「湖南省可降解塑料信息管理平台」的追溯管理体系，从源头到市场全流程服务和管理。</p>
+      <div class="steps" style="grid-template-columns:repeat(2,1fr);display:grid">
+        <div class="step"><h3>产品备案</h3><p>合作厂家产品经征集、审核、公示后进入备案名录，包装标注执行标准。</p></div>
+        <div class="step"><h3>印码出厂</h3><p>每件产品印有监管码，扫码即可查询产品备案与溯源信息。</p></div>
+        <div class="step"><h3>抽检核查</h3><p>平台建立品控机制，对生产过程执行不定期现场核查与科学抽样检查。</p></div>
+        <div class="step"><h3>监督反馈</h3><p>专委会组织开展监督核查，消费者发现假冒伪劣可向平台反馈。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="container">
+      <h2 class="sec">检测报告（编号可查）</h2>
+      <p class="sec-sub">以下为在库检测报告示例，报告均出自具备 CMA / CNAS 资质的检测机构（国家塑料制品质量监督检验中心（北京））。更多品类报告在库，可随订单索取。</p>
+      <table class="tbl">
+        <thead>
+          <tr><th>委托/生产企业</th><th>样品名称</th><th>报告编号</th><th>机构</th><th>日期</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>长沙铭凯纸制品有限公司</td>
+            <td>无塑涂层纸杯、无塑涂层纸及制品</td>
+            <td><b>NTSQP[2021]C0001</b></td>
+            <td>国家塑料制品质量监督检验中心（北京）</td>
+            <td>2021-01-05</td>
+          </tr>
+          <tr>
+            <td>湖南绿斯达生物科技有限公司</td>
+            <td>全生物降解膜袋</td>
+            <td><b>国塑检[2021]C0432</b></td>
+            <td>同上</td>
+            <td>2021-05-12</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:12px">
+        说明：检测报告与所供批次对应，具体产品以出厂包装标注的执行标准与随货报告为准。
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <h2 class="sec">包装上的信息，就是品控承诺</h2>
+      <p class="sec-sub">易采通所售产品包装按要求标注以下内容——每一个字段都可以被追问。</p>
+      <div class="grid grid-3">
+        <div class="card"><h3>执行标准号</h3><p>按品类标注 GB/T 18006.3-2020、GB/T 38082-2019、GB/T 28018-2011 等。</p></div>
+        <div class="card"><h3>生产信息</h3><p>生产商、生产地址、生产批号、生产日期（见包装）、质保期。</p></div>
+        <div class="card"><h3>溯源与服务</h3><p>监管码/追溯码，以及 7×24 小时服务热线 400-0731-816。</p></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
